@@ -2,8 +2,8 @@
 
 package choreo;
 
-import static edu.wpi.first.util.ErrorMessages.requireNonNullParam;
-import static edu.wpi.first.wpilibj.Alert.AlertType.kError;
+import static org.wpilib.util.ErrorMessages.requireNonNullParam;
+import static org.wpilib.driverstation.Alert.Level.HIGH;
 
 import choreo.trajectory.DifferentialSample;
 import choreo.trajectory.EventMarker;
@@ -17,9 +17,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import edu.wpi.first.hal.HAL;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Filesystem;
+import org.wpilib.hardware.hal.HAL;
+import org.wpilib.driverstation.DriverStation;
+import org.wpilib.driverstation.DriverStationErrors;
+import org.wpilib.system.Filesystem;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,9 +42,9 @@ public final class Choreo {
   private static final String TRAJECTORY_FILE_EXTENSION = ".traj";
   private static final int TRAJ_SCHEMA_VERSION = TrajSchemaVersion.TRAJ_SCHEMA_VERSION;
   private static final MultiAlert cantFindTrajectory =
-      ChoreoAlert.multiAlert(causes -> "Could not find trajectory files: " + causes, kError);
+      ChoreoAlert.multiAlert(causes -> "Could not find trajectory files: " + causes, HIGH);
   private static final MultiAlert cantParseTrajectory =
-      ChoreoAlert.multiAlert(causes -> "Could not parse trajectory files: " + causes, kError);
+      ChoreoAlert.multiAlert(causes -> "Could not parse trajectory files: " + causes, HIGH);
 
   private static File CHOREO_DIR = new File(Filesystem.getDeployDirectory(), "choreo");
 
@@ -100,9 +101,9 @@ public final class Choreo {
     } catch (Exception ex) {
       ChoreoAlert.alert(
               "Unknown error when parsing " + trajectoryFile + "; check console for more details",
-              kError)
+              HIGH)
           .set(true);
-      DriverStation.reportError(ex.getMessage(), ex.getStackTrace());
+      DriverStationErrors.reportError(ex.getMessage(), ex.getStackTrace());
     }
     return Optional.empty();
   }

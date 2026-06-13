@@ -2,8 +2,8 @@
 
 package choreo.util;
 
-import edu.wpi.first.wpilibj.Alert;
-import edu.wpi.first.wpilibj.Alert.AlertType;
+import org.wpilib.driverstation.Alert;
+import org.wpilib.driverstation.Alert.Level;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
@@ -17,7 +17,7 @@ public class ChoreoAlert {
    * @param type The type of alert
    * @return an Alert published under the "Choreo" group
    */
-  public static Alert alert(String name, AlertType type) {
+  public static Alert alert(String name, Level type) {
     return new Alert("Choreo Alerts", name, type);
   }
 
@@ -29,7 +29,7 @@ public class ChoreoAlert {
    * @return a MultiAlert published under the "Choreo" group
    */
   public static MultiAlert multiAlert(
-      Function<List<String>, String> textGenerator, AlertType type) {
+      Function<List<String>, String> textGenerator, Level type) {
     return new MultiAlert(textGenerator, type);
   }
 
@@ -41,7 +41,7 @@ public class ChoreoAlert {
     private final Function<List<String>, String> textGenerator;
     private final List<String> causes = new ArrayList<>();
 
-    MultiAlert(Function<List<String>, String> textGenerator, AlertType type) {
+    MultiAlert(Function<List<String>, String> textGenerator, Level type) {
       super("Choreo Alerts", textGenerator.apply(List.of()), type);
       this.textGenerator = textGenerator;
     }

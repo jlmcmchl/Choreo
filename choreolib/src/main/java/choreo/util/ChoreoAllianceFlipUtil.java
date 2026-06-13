@@ -5,14 +5,14 @@ package choreo.util;
 import static choreo.util.FieldDimensions.FIELD_LENGTH;
 import static choreo.util.FieldDimensions.FIELD_WIDTH;
 
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Pose3d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Rotation3d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.geometry.Translation3d;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.math.geometry.Pose3d;
+import org.wpilib.math.geometry.Rotation2d;
+import org.wpilib.math.geometry.Rotation3d;
+import org.wpilib.math.geometry.Translation2d;
+import org.wpilib.math.geometry.Translation3d;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.driverstation.MatchState;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -123,7 +123,7 @@ public class ChoreoAllianceFlipUtil {
    * @return If you are on red alliance.
    */
   public static boolean shouldFlip() {
-    return DriverStation.getAlliance().orElse(Alliance.Blue) == Alliance.Red;
+    return MatchState.getAlliance().orElse(Alliance.BLUE) == Alliance.RED;
   }
 
   /**
@@ -249,7 +249,7 @@ public class ChoreoAllianceFlipUtil {
         doFlip
             ? allianceOpt
                 .get()
-                .flatMap(ally -> poseOpt.map(pose -> ally == Alliance.Red ? flip(pose) : pose))
+                .flatMap(ally -> poseOpt.map(pose -> ally == Alliance.RED ? flip(pose) : pose))
             : poseOpt;
   }
 
@@ -275,7 +275,7 @@ public class ChoreoAllianceFlipUtil {
                 .flatMap(
                     ally ->
                         translationOpt.map(
-                            translation -> ally == Alliance.Red ? flip(translation) : translation))
+                            translation -> ally == Alliance.RED ? flip(translation) : translation))
             : translationOpt;
   }
 }

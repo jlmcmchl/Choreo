@@ -2,12 +2,12 @@
 
 package choreo.auto;
 
-import edu.wpi.first.hal.AllianceStationID;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
-import edu.wpi.first.wpilibj.simulation.DriverStationSim;
-import edu.wpi.first.wpilibj2.command.Subsystem;
+import org.wpilib.hardware.hal.AllianceStationID;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.driverstation.DriverStation;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.simulation.DriverStationSim;
+import org.wpilib.command2.Subsystem;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -38,7 +38,7 @@ public class AutoTestHelper {
         alliance
             .map(
                 all -> {
-                  if (all.equals(Alliance.Blue)) {
+                  if (all.equals(Alliance.BLUE)) {
                     return AllianceStationID.Blue1;
                   } else {
                     return AllianceStationID.Red1;

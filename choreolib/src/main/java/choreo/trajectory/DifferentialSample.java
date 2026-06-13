@@ -3,17 +3,17 @@
 package choreo.trajectory;
 
 import choreo.util.ChoreoAllianceFlipUtil;
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.Matrix;
-import edu.wpi.first.math.VecBuilder;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.math.numbers.N1;
-import edu.wpi.first.math.numbers.N2;
-import edu.wpi.first.math.numbers.N6;
-import edu.wpi.first.math.system.NumericalIntegration;
-import edu.wpi.first.util.struct.Struct;
+import org.wpilib.math.util.MathUtil;
+import org.wpilib.math.linalg.Matrix;
+import org.wpilib.math.linalg.VecBuilder;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.math.geometry.Rotation2d;
+import org.wpilib.math.kinematics.ChassisVelocities;
+import org.wpilib.math.numbers.N1;
+import org.wpilib.math.numbers.N2;
+import org.wpilib.math.numbers.N6;
+import org.wpilib.math.system.NumericalIntegration;
+import org.wpilib.util.struct.Struct;
 import java.nio.ByteBuffer;
 import java.util.function.BiFunction;
 
@@ -109,11 +109,11 @@ public class DifferentialSample implements TrajectorySample<DifferentialSample> 
    * Returns the field-relative chassis speeds of this sample.
    *
    * @return the field-relative chassis speeds of this sample.
-   * @see edu.wpi.first.math.kinematics.DifferentialDriveKinematics#toChassisSpeeds
+   * @see org.wpilib.math.kinematics.DifferentialDriveKinematics#toChassisVelocities
    */
   @Override
-  public ChassisSpeeds getChassisSpeeds() {
-    return new ChassisSpeeds((vl + vr) / 2, 0, omega);
+  public ChassisVelocities getChassisVelocities() {
+    return new ChassisVelocities((vl + vr) / 2, 0, omega);
   }
 
   @Override
@@ -160,7 +160,7 @@ public class DifferentialSample implements TrajectorySample<DifferentialSample> 
     double jr = (endValue.ar - this.ar) / dt;
 
     return new DifferentialSample(
-        MathUtil.interpolate(this.t, endValue.t, scale),
+        MathUtil.lerp(this.t, endValue.t, scale),
         sample.get(0, 0),
         sample.get(1, 0),
         sample.get(2, 0),
@@ -169,8 +169,8 @@ public class DifferentialSample implements TrajectorySample<DifferentialSample> 
         sample.get(5, 0),
         this.al + jl * τ,
         this.ar + jr * τ,
-        MathUtil.interpolate(this.fl, endValue.fl, scale),
-        MathUtil.interpolate(this.fr, endValue.fr, scale));
+        MathUtil.lerp(this.fl, endValue.fl, scale),
+        MathUtil.lerp(this.fr, endValue.fr, scale));
   }
 
   public DifferentialSample flipped() {
@@ -225,7 +225,7 @@ public class DifferentialSample implements TrajectorySample<DifferentialSample> 
 
     @Override
     public int getSize() {
-      return Struct.kSizeDouble * 10;
+      return Struct.DOUBLE_SIZE * 10;
     }
 
     @Override

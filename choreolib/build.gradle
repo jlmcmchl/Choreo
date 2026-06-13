@@ -44,7 +44,7 @@ dependencies {
     implementation "org.wpilib.wpilibj:wpilibj-java:$wpilibVersion"
     implementation "org.wpilib.wpiutil:wpiutil-java:$wpilibVersion"
     implementation "org.wpilib.wpimath:wpimath-java:$wpilibVersion"
-    implementation "org.wpilib.wpilibNewCommands:wpilibNewCommands-java:$wpilibVersion"
+    implementation "org.wpilib.commandsv2:commandsv2-java:$wpilibVersion"
     implementation "org.wpilib.wpiunits:wpiunits-java:$wpilibVersion"
     implementation "org.wpilib.ntcore:ntcore-java:$wpilibVersion"
     implementation "org.wpilib.hal:hal-java:$wpilibVersion"

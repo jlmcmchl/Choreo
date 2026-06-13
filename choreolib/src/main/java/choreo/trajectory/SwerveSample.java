@@ -4,11 +4,11 @@ package choreo.trajectory;
 
 import choreo.util.ChoreoAllianceFlipUtil;
 import choreo.util.ChoreoArrayUtil;
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.util.struct.Struct;
+import org.wpilib.math.util.MathUtil;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.math.geometry.Rotation2d;
+import org.wpilib.math.kinematics.ChassisVelocities;
+import org.wpilib.util.struct.Struct;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
@@ -141,8 +141,8 @@ public class SwerveSample implements TrajectorySample<SwerveSample> {
   }
 
   @Override
-  public ChassisSpeeds getChassisSpeeds() {
-    return new ChassisSpeeds(vx, vy, omega);
+  public ChassisVelocities getChassisVelocities() {
+    return new ChassisVelocities(vx, vy, omega);
   }
 
   @Override
@@ -153,9 +153,9 @@ public class SwerveSample implements TrajectorySample<SwerveSample> {
     double[] interp_fy = new double[4];
     for (int i = 0; i < 4; ++i) {
       interp_fx[i] =
-          MathUtil.interpolate(this.moduleForcesX()[i], endValue.moduleForcesX()[i], scale);
+          MathUtil.lerp(this.moduleForcesX()[i], endValue.moduleForcesX()[i], scale);
       interp_fy[i] =
-          MathUtil.interpolate(this.moduleForcesY()[i], endValue.moduleForcesY()[i], scale);
+          MathUtil.lerp(this.moduleForcesY()[i], endValue.moduleForcesY()[i], scale);
     }
 
     // Integrate the acceleration to get the rest of the state, since linearly
@@ -275,7 +275,7 @@ public class SwerveSample implements TrajectorySample<SwerveSample> {
 
     @Override
     public int getSize() {
-      return Struct.kSizeDouble * 18;
+      return Struct.DOUBLE_SIZE * 18;
     }
 
     @Override
