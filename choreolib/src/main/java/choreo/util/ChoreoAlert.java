@@ -2,11 +2,11 @@
 
 package choreo.util;
 
-import org.wpilib.driverstation.Alert;
-import org.wpilib.driverstation.Alert.Level;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import org.wpilib.driverstation.Alert;
+import org.wpilib.driverstation.Alert.Level;
 
 /** A utility class for creating alerts under the "Choreo Alerts" group. */
 public class ChoreoAlert {
@@ -28,8 +28,7 @@ public class ChoreoAlert {
    * @param type The type of alert
    * @return a MultiAlert published under the "Choreo" group
    */
-  public static MultiAlert multiAlert(
-      Function<List<String>, String> textGenerator, Level type) {
+  public static MultiAlert multiAlert(Function<List<String>, String> textGenerator, Level type) {
     return new MultiAlert(textGenerator, type);
   }
 

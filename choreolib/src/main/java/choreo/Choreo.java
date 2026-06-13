@@ -2,8 +2,8 @@
 
 package choreo;
 
-import static org.wpilib.util.ErrorMessages.requireNonNullParam;
 import static org.wpilib.driverstation.Alert.Level.HIGH;
+import static org.wpilib.util.ErrorMessages.requireNonNullParam;
 
 import choreo.trajectory.DifferentialSample;
 import choreo.trajectory.EventMarker;
@@ -17,10 +17,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
-import org.wpilib.hardware.hal.HAL;
-import org.wpilib.driverstation.DriverStation;
-import org.wpilib.driverstation.DriverStationErrors;
-import org.wpilib.system.Filesystem;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,6 +28,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiConsumer;
+import org.wpilib.driverstation.DriverStationErrors;
+import org.wpilib.hardware.hal.HAL;
+import org.wpilib.system.Filesystem;
 
 /** Utilities to load and follow Choreo Trajectories */
 public final class Choreo {

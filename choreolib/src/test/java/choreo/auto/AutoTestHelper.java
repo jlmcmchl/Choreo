@@ -2,13 +2,13 @@
 
 package choreo.auto;
 
-import org.wpilib.hardware.hal.AllianceStationID;
-import org.wpilib.math.geometry.Pose2d;
-import org.wpilib.driverstation.Alliance;
-import org.wpilib.simulation.DriverStationSim;
-import org.wpilib.command2.Subsystem;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import org.wpilib.command2.Subsystem;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.hardware.hal.AllianceStationID;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.simulation.DriverStationSim;
 
 public class AutoTestHelper {
   public static AutoFactory factory(

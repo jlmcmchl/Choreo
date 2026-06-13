@@ -9,21 +9,21 @@ import choreo.Choreo.TrajectoryLogger;
 import choreo.trajectory.SwerveSample;
 import choreo.trajectory.Trajectory;
 import choreo.trajectory.TrajectorySample;
-import org.wpilib.hardware.hal.HAL;
-import org.wpilib.math.geometry.Pose2d;
-import org.wpilib.driverstation.Alliance;
-import org.wpilib.driverstation.MatchState;
-import org.wpilib.framework.RobotBase;
-import org.wpilib.command2.Command;
-import org.wpilib.command2.Commands;
-import org.wpilib.command2.Subsystem;
-import org.wpilib.command2.button.Trigger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import org.wpilib.command2.Command;
+import org.wpilib.command2.Commands;
+import org.wpilib.command2.Subsystem;
+import org.wpilib.command2.button.Trigger;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.driverstation.MatchState;
+import org.wpilib.framework.RobotBase;
+import org.wpilib.hardware.hal.HAL;
+import org.wpilib.math.geometry.Pose2d;
 
 /**
  * A factory used to create {@link AutoRoutine}s and {@link AutoTrajectory}s.

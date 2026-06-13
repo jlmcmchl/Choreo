@@ -8,18 +8,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import choreo.trajectory.SwerveSample;
 import choreo.trajectory.Trajectory;
 import choreo.trajectory.TrajectoryTestHelper;
+import java.util.concurrent.atomic.AtomicReference;
+import org.junit.jupiter.api.Test;
+import org.wpilib.command2.Command;
+import org.wpilib.command2.CommandScheduler;
+import org.wpilib.command2.SchedulerMaker;
+import org.wpilib.driverstation.RobotState;
 import org.wpilib.hardware.hal.HAL;
 import org.wpilib.hardware.hal.RobotMode;
 import org.wpilib.math.geometry.Pose2d;
 import org.wpilib.math.geometry.Rotation2d;
-import org.wpilib.driverstation.RobotState;
 import org.wpilib.simulation.DriverStationSim;
 import org.wpilib.simulation.SimHooks;
-import org.wpilib.command2.Command;
-import org.wpilib.command2.CommandScheduler;
-import org.wpilib.command2.SchedulerMaker;
-import java.util.concurrent.atomic.AtomicReference;
-import org.junit.jupiter.api.Test;
 
 public class TrajectoryCmdTest {
   private static final Pose2d start = new Pose2d();

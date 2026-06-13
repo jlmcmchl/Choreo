@@ -14,22 +14,22 @@ import choreo.trajectory.TrajectorySample;
 import choreo.util.ChoreoAlert;
 import choreo.util.ChoreoAlert.MultiAlert;
 import choreo.util.ChoreoAllianceFlipUtil;
-import org.wpilib.math.geometry.Pose2d;
-import org.wpilib.math.geometry.Rotation2d;
-import org.wpilib.math.geometry.Translation2d;
-import org.wpilib.driverstation.Alert;
-import org.wpilib.system.Timer;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import org.wpilib.command2.Command;
 import org.wpilib.command2.Commands;
 import org.wpilib.command2.FunctionalCommand;
 import org.wpilib.command2.ScheduleCommand;
 import org.wpilib.command2.Subsystem;
 import org.wpilib.command2.button.Trigger;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import org.wpilib.driverstation.Alert;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.math.geometry.Rotation2d;
+import org.wpilib.math.geometry.Translation2d;
+import org.wpilib.system.Timer;
 
 /**
  * A class that represents a trajectory that can be used in an autonomous routine and have triggers

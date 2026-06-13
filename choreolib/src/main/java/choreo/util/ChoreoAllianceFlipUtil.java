@@ -5,17 +5,17 @@ package choreo.util;
 import static choreo.util.FieldDimensions.FIELD_LENGTH;
 import static choreo.util.FieldDimensions.FIELD_WIDTH;
 
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.function.Supplier;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.driverstation.MatchState;
 import org.wpilib.math.geometry.Pose2d;
 import org.wpilib.math.geometry.Pose3d;
 import org.wpilib.math.geometry.Rotation2d;
 import org.wpilib.math.geometry.Rotation3d;
 import org.wpilib.math.geometry.Translation2d;
 import org.wpilib.math.geometry.Translation3d;
-import org.wpilib.driverstation.Alliance;
-import org.wpilib.driverstation.MatchState;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.function.Supplier;
 
 /**
  * A utility to standardize flipping of coordinate data based on the current alliance across

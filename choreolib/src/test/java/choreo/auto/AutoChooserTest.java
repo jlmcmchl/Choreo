@@ -5,17 +5,17 @@ package choreo.auto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Set;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.wpilib.command2.Commands;
 import org.wpilib.hardware.hal.AllianceStationID;
 import org.wpilib.hardware.hal.HAL;
 import org.wpilib.networktables.NetworkTable;
 import org.wpilib.networktables.NetworkTableInstance;
 import org.wpilib.simulation.DriverStationSim;
 import org.wpilib.smartdashboard.SendableBuilderImpl;
-import org.wpilib.command2.Commands;
-import java.util.Set;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public class AutoChooserTest {
   private static final String NONE_NAME = AutoChooser.NONE_NAME;

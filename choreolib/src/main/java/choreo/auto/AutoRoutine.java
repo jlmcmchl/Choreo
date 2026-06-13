@@ -8,14 +8,14 @@ import choreo.auto.AutoFactory.AllianceContext;
 import choreo.trajectory.Trajectory;
 import choreo.trajectory.TrajectorySample;
 import choreo.util.ChoreoAlert;
-import org.wpilib.driverstation.RobotState;
-import org.wpilib.system.Timer;
-import org.wpilib.event.EventLoop;
+import java.util.function.BooleanSupplier;
 import org.wpilib.command2.Command;
 import org.wpilib.command2.CommandScheduler;
 import org.wpilib.command2.Commands;
 import org.wpilib.command2.button.Trigger;
-import java.util.function.BooleanSupplier;
+import org.wpilib.driverstation.RobotState;
+import org.wpilib.event.EventLoop;
+import org.wpilib.system.Timer;
 
 /**
  * An object that represents an autonomous routine.

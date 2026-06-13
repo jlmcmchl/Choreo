@@ -8,18 +8,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import choreo.trajectory.SwerveSample;
 import choreo.trajectory.Trajectory;
 import choreo.trajectory.TrajectoryTestHelper;
-import org.wpilib.hardware.hal.HAL;
-import org.wpilib.math.geometry.Pose2d;
-import org.wpilib.math.geometry.Rotation2d;
-import org.wpilib.hardware.hal.RobotMode;
-import org.wpilib.driverstation.RobotState;
-import org.wpilib.simulation.DriverStationSim;
-import org.wpilib.simulation.SimHooks;
+import org.junit.jupiter.api.Test;
 import org.wpilib.command2.CommandScheduler;
 import org.wpilib.command2.Commands;
 import org.wpilib.command2.SchedulerMaker;
 import org.wpilib.command2.button.Trigger;
-import org.junit.jupiter.api.Test;
+import org.wpilib.driverstation.RobotState;
+import org.wpilib.hardware.hal.HAL;
+import org.wpilib.hardware.hal.RobotMode;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.math.geometry.Rotation2d;
+import org.wpilib.simulation.DriverStationSim;
+import org.wpilib.simulation.SimHooks;
 
 public class DoneTest {
   private static final Pose2d start = new Pose2d();

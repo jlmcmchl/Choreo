@@ -6,12 +6,12 @@ import static choreo.auto.AutoTestHelper.setAlliance;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.wpilib.hardware.hal.HAL;
-import org.wpilib.driverstation.Alliance;
 import java.util.Optional;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.hardware.hal.HAL;
 
 public class RoutineKillNoAllianceTest {
   AutoFactory factoryFlip;

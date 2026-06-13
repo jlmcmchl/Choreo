@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import choreo.trajectory.SwerveSample;
 import choreo.trajectory.Trajectory;
 import choreo.util.ChoreoAllianceFlipUtil;
-import org.wpilib.hardware.hal.HAL;
-import org.wpilib.math.geometry.Pose2d;
-import org.wpilib.math.geometry.Rotation2d;
-import org.wpilib.driverstation.Alliance;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
+import org.wpilib.driverstation.Alliance;
+import org.wpilib.hardware.hal.HAL;
+import org.wpilib.math.geometry.Pose2d;
+import org.wpilib.math.geometry.Rotation2d;
 
 public class PoseFlippingTest {
   Optional<Alliance> alliance;

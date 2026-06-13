@@ -5,19 +5,19 @@ package choreo.auto;
 import static org.wpilib.driverstation.Alert.Level.HIGH;
 
 import choreo.util.ChoreoAlert;
-import org.wpilib.util.sendable.Sendable;
-import org.wpilib.util.sendable.SendableBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Supplier;
+import org.wpilib.command2.Command;
+import org.wpilib.command2.Commands;
 import org.wpilib.driverstation.Alert;
 import org.wpilib.driverstation.Alliance;
 import org.wpilib.driverstation.MatchState;
 import org.wpilib.driverstation.RobotState;
 import org.wpilib.framework.RobotBase;
-import org.wpilib.command2.Command;
-import org.wpilib.command2.Commands;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
+import org.wpilib.util.sendable.Sendable;
+import org.wpilib.util.sendable.SendableBuilder;
 
 /**
  * An Choreo specific {@code SendableChooser} that allows for the selection of {@link AutoRoutine}s
@@ -32,8 +32,7 @@ import java.util.function.Supplier;
  * <p>Once the {@link AutoChooser} is made you can add {@link AutoRoutine}s to it using {@link
  * #addRoutine} or add {@link Command}s to it using {@link #addCmd}. Similar to {@code
  * SendableChooser} this chooser can be added to the {@link
- * org.wpilib.smartdashboard.SmartDashboard} using {@code
- * SmartDashboard.putData(Sendable)}.
+ * org.wpilib.smartdashboard.SmartDashboard} using {@code SmartDashboard.putData(Sendable)}.
  *
  * <p>You can set the Robot's autonomous command to the chooser's chosen auto routine via <code>
  * RobotModeTriggers.autonomous.whileTrue(chooser.autoSchedulingCmd());</code>
