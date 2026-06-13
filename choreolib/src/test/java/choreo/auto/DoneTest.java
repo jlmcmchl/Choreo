@@ -11,7 +11,8 @@ import choreo.trajectory.TrajectoryTestHelper;
 import org.wpilib.hardware.hal.HAL;
 import org.wpilib.math.geometry.Pose2d;
 import org.wpilib.math.geometry.Rotation2d;
-import org.wpilib.driverstation.DriverStation;
+import org.wpilib.hardware.hal.RobotMode;
+import org.wpilib.driverstation.RobotState;
 import org.wpilib.simulation.DriverStationSim;
 import org.wpilib.simulation.SimHooks;
 import org.wpilib.command2.CommandScheduler;
@@ -55,10 +56,9 @@ public class DoneTest {
 
     DriverStationSim.setDsAttached(true);
     DriverStationSim.setEnabled(true);
-    DriverStationSim.setAutonomous(true);
+    DriverStationSim.setRobotMode(RobotMode.AUTONOMOUS);
     DriverStationSim.notifyNewData();
-    DriverStation.refreshData();
-    assertTrue(DriverStation.isAutonomousEnabled());
+    assertTrue(RobotState.isAutonomousEnabled());
 
     assertFalse(oneSecondIn);
     assertFalse(twoSecondIn);
@@ -143,9 +143,8 @@ public class DoneTest {
 
     DriverStationSim.setDsAttached(true);
     DriverStationSim.setEnabled(true);
-    DriverStationSim.setAutonomous(true);
+    DriverStationSim.setRobotMode(RobotMode.AUTONOMOUS);
     DriverStationSim.notifyNewData();
-    DriverStation.refreshData();
-    assertTrue(DriverStation.isAutonomousEnabled());
+    assertTrue(RobotState.isAutonomousEnabled());
   }
 }

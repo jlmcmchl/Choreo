@@ -4,7 +4,6 @@ package choreo.auto;
 
 import org.wpilib.hardware.hal.AllianceStationID;
 import org.wpilib.math.geometry.Pose2d;
-import org.wpilib.driverstation.DriverStation;
 import org.wpilib.driverstation.Alliance;
 import org.wpilib.simulation.DriverStationSim;
 import org.wpilib.command2.Subsystem;
@@ -39,14 +38,13 @@ public class AutoTestHelper {
             .map(
                 all -> {
                   if (all.equals(Alliance.BLUE)) {
-                    return AllianceStationID.Blue1;
+                    return AllianceStationID.BLUE_1;
                   } else {
-                    return AllianceStationID.Red1;
+                    return AllianceStationID.RED_1;
                   }
                 })
-            .orElse(AllianceStationID.Unknown);
+            .orElse(AllianceStationID.UNKNOWN);
     DriverStationSim.setAllianceStationId(id);
     DriverStationSim.notifyNewData();
-    DriverStation.refreshData();
   }
 }

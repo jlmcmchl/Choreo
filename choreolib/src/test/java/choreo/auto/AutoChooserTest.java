@@ -9,7 +9,6 @@ import org.wpilib.hardware.hal.AllianceStationID;
 import org.wpilib.hardware.hal.HAL;
 import org.wpilib.networktables.NetworkTable;
 import org.wpilib.networktables.NetworkTableInstance;
-import org.wpilib.driverstation.DriverStation;
 import org.wpilib.simulation.DriverStationSim;
 import org.wpilib.smartdashboard.SendableBuilderImpl;
 import org.wpilib.command2.Commands;
@@ -138,11 +137,10 @@ public class AutoChooserTest {
     // DriverStation should report disconnected causing the active to not update
     assertNTActive(fnName, NONE_NAME);
 
-    DriverStationSim.setAllianceStationId(AllianceStationID.Blue1);
+    DriverStationSim.setAllianceStationId(AllianceStationID.BLUE_1);
     DriverStationSim.setEnabled(false);
     DriverStationSim.setDsAttached(true);
     DriverStationSim.notifyNewData();
-    DriverStation.refreshData();
 
     builder.update();
     builder.update();
@@ -151,9 +149,8 @@ public class AutoChooserTest {
 
     assertEquals(chooser.selectedCommand().getName(), "SelectTestRoutine");
 
-    DriverStationSim.setAllianceStationId(AllianceStationID.Unknown);
+    DriverStationSim.setAllianceStationId(AllianceStationID.UNKNOWN);
     DriverStationSim.setDsAttached(false);
     DriverStationSim.notifyNewData();
-    DriverStation.refreshData();
   }
 }
