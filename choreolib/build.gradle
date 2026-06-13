@@ -238,5 +238,5 @@ test {
 apply from: 'publish.gradle'
 
 wrapper {
-    gradleVersion '8.11'
+    gradleVersion '9.4.1'
 }
