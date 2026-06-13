@@ -1,4 +1,5 @@
 import org.wpilib.toolchain.*
+import org.wpilib.nativeutils.dependencies.WPISharedMavenDependency
 
 plugins {
     id 'cpp'
@@ -38,6 +39,17 @@ wpilibRepositories.use2027Repos()
 
 // Apply C++ configuration
 apply from: 'config.gradle'
+
+// mrclib is a transitive runtime dep of hal-cpp but ships under its own version scheme.
+nativeUtils.getNativeDependencyContainer().register('mrclib_shared', WPISharedMavenDependency) { c ->
+    c.groupId.set('org.wpilib.mrclib')
+    c.artifactId.set('mrclib-cpp')
+    c.headerClassifier.set('headers')
+    c.ext.set('zip')
+    c.version.set('2027.1.+')
+    c.noDebugSplit.set(true)
+    c.targetPlatforms.addAll(nativeUtils.wpi.platforms.allPlatforms)
+}
 
 // Apply Java configuration
 dependencies {
@@ -147,6 +159,7 @@ model {
 
             nativeUtils.useRequiredLibrary(it, "datalog_shared")
             nativeUtils.useRequiredLibrary(it, "wpilib_shared", "googletest_static")
+            nativeUtils.useRequiredLibrary(it, "mrclib_shared")
 
             binaries.all {
                 def arch = it.targetPlatform.name
