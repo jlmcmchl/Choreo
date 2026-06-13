@@ -6,6 +6,12 @@
 
 #include <wpi/util/json.hpp>
 
+static inline double json_get_double(const wpi::util::json& j) {
+  if (j.is_int()) return static_cast<double>(j.get_int());
+  if (j.is_uint()) return static_cast<double>(j.get_uint());
+  return j.get_double();
+}
+
 void choreo::to_json(wpi::util::json& json, const SwerveSample& trajectorySample) {
   std::array<double, 4> fx;
   std::transform(trajectorySample.moduleForcesX.begin(),
@@ -33,24 +39,24 @@ void choreo::to_json(wpi::util::json& json, const SwerveSample& trajectorySample
 }
 
 void choreo::from_json(const wpi::util::json& json, SwerveSample& trajectorySample) {
-  trajectorySample.timestamp = wpi::units::second_t{json.at("t").get_double()};
-  trajectorySample.x = wpi::units::meter_t{json.at("x").get_double()};
-  trajectorySample.y = wpi::units::meter_t{json.at("y").get_double()};
-  trajectorySample.heading = wpi::units::radian_t{json.at("heading").get_double()};
-  trajectorySample.vx = wpi::units::meters_per_second_t{json.at("vx").get_double()};
-  trajectorySample.vy = wpi::units::meters_per_second_t{json.at("vy").get_double()};
+  trajectorySample.timestamp = wpi::units::second_t{json_get_double(json.at("t"))};
+  trajectorySample.x = wpi::units::meter_t{json_get_double(json.at("x"))};
+  trajectorySample.y = wpi::units::meter_t{json_get_double(json.at("y"))};
+  trajectorySample.heading = wpi::units::radian_t{json_get_double(json.at("heading"))};
+  trajectorySample.vx = wpi::units::meters_per_second_t{json_get_double(json.at("vx"))};
+  trajectorySample.vy = wpi::units::meters_per_second_t{json_get_double(json.at("vy"))};
   trajectorySample.omega =
-      wpi::units::radians_per_second_t{json.at("omega").get_double()};
+      wpi::units::radians_per_second_t{json_get_double(json.at("omega"))};
   trajectorySample.ax =
-      wpi::units::meters_per_second_squared_t{json.at("ax").get_double()};
+      wpi::units::meters_per_second_squared_t{json_get_double(json.at("ax"))};
   trajectorySample.ay =
-      wpi::units::meters_per_second_squared_t{json.at("ay").get_double()};
+      wpi::units::meters_per_second_squared_t{json_get_double(json.at("ay"))};
   trajectorySample.alpha =
-      wpi::units::radians_per_second_squared_t{json.at("alpha").get_double()};
+      wpi::units::radians_per_second_squared_t{json_get_double(json.at("alpha"))};
   const auto& fx = json.at("fx").get_array();
   const auto& fy = json.at("fy").get_array();
   for (int i = 0; i < 4; ++i) {
-    trajectorySample.moduleForcesX[i] = wpi::units::newton_t{fx[i].get_double()};
-    trajectorySample.moduleForcesY[i] = wpi::units::newton_t{fy[i].get_double()};
+    trajectorySample.moduleForcesX[i] = wpi::units::newton_t{json_get_double(fx[i])};
+    trajectorySample.moduleForcesY[i] = wpi::units::newton_t{json_get_double(fy[i])};
   }
 }

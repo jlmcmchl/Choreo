@@ -9,7 +9,7 @@
 static std::vector<int> json_to_int_vector(const wpi::util::json& j) {
   std::vector<int> out;
   for (const auto& elem : j.get_array()) {
-    out.push_back(static_cast<int>(elem.get_double()));
+    out.push_back(static_cast<int>(elem.get_int()));
   }
   return out;
 }
