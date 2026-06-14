@@ -1,4 +1,4 @@
 jdk:
   - openjdk25
 install:
-  - cd choreolib && ./gradlew publishToMavenLocal -x test -x spotlessCheck
+  - cd choreolib && ./gradlew publishJavaPublicationToMavenLocal -x test -x spotlessCheck
