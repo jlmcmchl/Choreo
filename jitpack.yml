@@ -1,0 +1,7 @@
+jdk:
+  - openjdk25
+build:
+  commands:
+    - cd choreolib && ./gradlew jar -x test -x spotlessCheck
+  artifacts:
+    - choreolib/build/libs/*.jar
